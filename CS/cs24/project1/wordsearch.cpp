@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "word.h"
 
 
 using namespace std;
@@ -82,7 +83,7 @@ int main(int argc, char* argv[])
   cin>>user_word;
   for(int a=0;a<used;a++){
 	  if(user_word==word_array[a].get_word()){
-		  word_array[i].printing();
+		  word_array[a].printing();
 		  break;
 		  return 0;
 	  }
