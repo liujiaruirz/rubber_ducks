@@ -31,6 +31,8 @@ int main(int argc, char* argv[])
 {
   string dir; //
   vector<string> files = vector<string>();
+  word word_array[1000];
+  int used=0;
 
   if (argc < 2)
     {
@@ -55,7 +57,19 @@ int main(int argc, char* argv[])
       fin>>word;
       if(fin.eof()) {cout << "EOF " << files[i] << endl; break;}
       else {
-	cout<<files[i]<<"::"<<word<<endl;
+		  bool exist=false;
+		  for(int j=0;j<used;j++){
+			  if(word==word_array[j]){
+				  word_array[j].addition(files[i]);
+				  exist=true;
+				  
+			  }
+		  }
+		  if(!exist){
+			  word_array[used].set_word(word);
+			  word_array[used].addition(files[i]);
+		  }
+			  
 
 	// Now the string "word" holds the keyword, and the string "files[i]" holds the document name.
 	// Use these two strings to search/insert in your array/list of words.
@@ -63,8 +77,18 @@ int main(int argc, char* argv[])
     }
     fin.close();
   }
-
-  cout << "This is the next part of the program " << endl;
+  string user_word;
+  cout<<"Enter the word you want to search: "<<endl;
+  cin>>user_word;
+  for(int a=0;a<used;a++){
+	  if(user_word==word_array[a].get_word()){
+		  word_array[i].printing();
+		  break;
+		  return 0;
+	  }
+  }
+  cout<<"The word does not exist."<<endl;
+  return 0;
 
 }
 
